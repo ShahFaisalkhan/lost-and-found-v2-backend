@@ -20,7 +20,7 @@ router.post('/', multer.single('image'), async (req, res) => {
     const userId = decoded.id;
 
     const { title, description, location, date, isLost, contactNo } = req.body;
-
+    console.log("req.file in item.js is",req.file)
     const newItem = new Item({
       title,
       description,
