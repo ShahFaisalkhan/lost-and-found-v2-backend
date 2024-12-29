@@ -31,7 +31,7 @@ app.use('/api/items', itemRoutes); // Use the items API
 app.use('/auth', authRoutes); // Use the items API
 app.use('/api/contact', contactRoute);
 app.get("/" ,(req,res) => {
-  res.json("hello world");
+  res.json("hello world ..........");
 })
 // Start the server on a specific port
 const PORT = process.env.PORT || 5000;
