@@ -9,7 +9,17 @@ const path = require("path");
 dotenv.config(); // Load environment variables
 
 const app = express(); // Initialize Express app
+// Use dynamic CORS origin
+// const CLIENT_BASE_URL = process.env.CLIENT_BASE_URL;
+
+// app.use(cors({ origin: CLIENT_BASE_URL }));
 app.use(cors()); // Enable CORS for all routes
+// Allow requests from your frontend's URL
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'https://lost-and-found-orpin.vercel.app'], // Replace with your frontend URLs
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow appropriate HTTP methods
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allow required headers
+// }));
 app.use(bodyParser.json()); // Parse JSON data from requests
 app.use(express.json()); // Parses JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded payloads
@@ -31,7 +41,7 @@ app.use('/api/items', itemRoutes); // Use the items API
 app.use('/auth', authRoutes); // Use the items API
 app.use('/api/contact', contactRoute);
 app.get("/" ,(req,res) => {
-  res.json("hello world ..........");
+  res.json("hello");
 })
 // Start the server on a specific port
 const PORT = process.env.PORT || 5000;

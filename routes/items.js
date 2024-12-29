@@ -7,6 +7,34 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
+// const cloudinary = require('cloudinary').v2;
+// const { CloudinaryStorage } = require('multer-storage-cloudinary');
+// const multer = require('multer');
+
+// // Configure Cloudinary
+// cloudinary.config({
+//   // cloud_name: process.env.CLOUDINARY_CLOUD_NAME,  Replace with your Cloudinary cloud name
+//   cloud_name: dq1vugfow, // Replace with your Cloudinary cloud name
+
+//   // api_key: process.env.CLOUDINARY_API_KEY,  Replace with your API key
+//   api_key: 415963984864831, // Replace with your API key
+
+//   // api_secret: process.env.CLOUDINARY_API_SECRET, // Replace with your API secret
+//   api_secret: JIzkc0zZS3i36B0YlXfdSgt6Hao, // Replace with your API secret
+
+// });
+
+// Set up Multer storage for Cloudinary
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: 'lost-and-found', // Folder name in Cloudinary
+//     allowed_formats: ['jpeg', 'png', 'jpg'], // Allowed file types
+//   },
+// });
+
+// const upload = multer({ storage });
+
 // POST a new item with image upload
 router.post('/', multer.single('image'), async (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -20,7 +48,7 @@ router.post('/', multer.single('image'), async (req, res) => {
     const userId = decoded.id;
 
     const { title, description, location, date, isLost, contactNo } = req.body;
-    console.log("req.file in item.js is",req.file)
+
     const newItem = new Item({
       title,
       description,
