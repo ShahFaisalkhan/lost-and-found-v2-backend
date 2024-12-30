@@ -11,7 +11,7 @@ dotenv.config(); // Load environment variables
 const app = express(); // Initialize Express app
 // Use dynamic CORS origin
 // const CLIENT_BASE_URL = process.env.CLIENT_BASE_URL;
-
+console.log(CLIENT_BASE_URL)
 // app.use(cors({ origin: CLIENT_BASE_URL }));
 app.use(cors()); // Enable CORS for all routes
 // Allow requests from your frontend's URL
